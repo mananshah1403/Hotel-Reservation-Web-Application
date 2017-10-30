@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "BestBreakfasts";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>BestBreakfasts</h2>
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>
+                Enter StartDate
+            </td>
+            <td>
+                <input id="SDate" name="SDate" type="date" />
+            </td>
+            <td>
+                Enter EndDate
+            </td>
+            <td>
+                <input id="EDate" name="EDate" type="date" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+}

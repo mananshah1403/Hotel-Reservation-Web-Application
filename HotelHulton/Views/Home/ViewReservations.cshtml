@@ -1,0 +1,43 @@
+﻿@model IEnumerable<HotelComponent.RESERVATION>
+
+@{
+    ViewBag.Title = "ViewReservations";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>ViewReservations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREDIT_CARD.CType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CUSTOMER.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREDIT_CARD.CType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CUSTOMER.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "ReservationDetails", new { id=item.InvoiceNo }) |
+        </td>
+    </tr>
+}
+
+</table>

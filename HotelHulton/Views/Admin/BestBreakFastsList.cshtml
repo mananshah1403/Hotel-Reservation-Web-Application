@@ -1,0 +1,33 @@
+﻿@model IEnumerable<HotelComponent.BestBreakfast>
+
+@{
+    ViewBag.Title = "BestBreakFastsList";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>BestBreakFastsList</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelID)
+        </td>
+     
+    </tr>
+}
+
+</table>

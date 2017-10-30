@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "OrderDetails";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>ServiceDetails</h2>
+<h4>Reservation Details</h4>
+
+@using (Html.BeginForm())
+{
+    <br/>
+    <table align="center">
+        <tr>
+            <td style="font-weight:bold" colspan="2">
+                Room Details
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Room Number
+            </td>
+            <td>
+                @ViewBag.RoomNo
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Room Type
+            </td>
+            <td>
+                @ViewBag.RoomType
+            </td>
+        </tr>
+        <tr>
+            <td width="150px">
+                Room Description
+            </td>
+            <td>
+                @ViewBag.Desc
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Price
+            </td>
+            <td>
+                @ViewBag.Price
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Capacity
+            </td>
+            <td>
+                @ViewBag.Capacity
+            </td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold" colspan="2">
+                Breakfast Details
+            </td>
+        </tr>
+
+        @foreach (var item in (List<HotelComponent.BREAKFAST>)ViewBag.BrkFast)
+        {
+            <tr>
+                <td width="150px">
+                    Breakfast Type
+                </td>
+                <td>
+                    @item.BType
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Orders
+                </td>
+                <td>
+                    @item.Description
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Price
+                </td>
+                <td>
+                    @item.BPrice
+                </td>
+            </tr>
+        }
+        <tr>
+            <td style="font-weight:bold">
+                Selected Services
+            </td>
+        </tr>
+        @foreach (var item in ViewBag.Services)
+        {
+            <tr>
+                <td width="150px">
+                    Service Type
+                </td>
+                <td>
+                    @item.SType
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Service Price
+                </td>
+                <td>
+                    @item.SPrice
+                </td>
+            </tr>
+        }
+        <tr>
+            <td style="font-weight:bold">
+                Total Price
+            </td>
+            <td style="font-weight:bold">
+                @ViewBag.TotalPayment
+            </td>
+        </tr>
+        
+        <tr>
+            
+            <td width="150px">
+                <br />
+                <br />
+                <input name="submit" type="submit" value="Confirm Booking" id="Confirm Booking" />
+            </td>
+            <td width="150px">
+                <br />
+                <br />
+                <input name="submit" type="submit" value="Book Another Room" id="Book Another Room" />
+            </td>
+        </tr>
+    </table>
+    
+}
+

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "ViewStats";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>ViewStats</h2>
+
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink("Highest Rated Room Type for each Hotel","BestRooms")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Best Customers", "BestCustomers")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Highest Rated Breakfasts", "BestBreakfasts")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Highest Rated Services", "BestServices")
+        </td>
+    </tr>
+</table>
+

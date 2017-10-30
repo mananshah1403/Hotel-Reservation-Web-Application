@@ -1,0 +1,1295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HotelTransylvaniaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BREAKFAST">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="BType" />
+          </Key>
+          <Property Name="HotelID" Type="int" Nullable="false" />
+          <Property Name="BType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BPrice" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BREAKFAST_REVIEW">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" Nullable="false" />
+          <Property Name="HotelID" Type="int" />
+          <Property Name="BType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rating" Type="decimal" Precision="2" Scale="2" />
+        </EntityType>
+        <EntityType Name="CREDIT_CARD">
+          <Key>
+            <PropertyRef Name="CNumber" />
+          </Key>
+          <Property Name="CNumber" Type="int" Nullable="false" />
+          <Property Name="CType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Baddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="int" />
+          <Property Name="ExpDate" Type="date" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone_No" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DISCOUNTED_ROOM">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+          </Key>
+          <Property Name="HotelID" Type="int" Nullable="false" />
+          <Property Name="RoomNo" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="11" Scale="11" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="HOTEL">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="InvoiceNo" />
+          </Key>
+          <Property Name="InvoiceNo" Type="int" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="CNumber" Type="int" />
+          <Property Name="RDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+          </Key>
+          <Property Name="HotelID" Type="int" Nullable="false" />
+          <Property Name="RoomNo" Type="int" Nullable="false" />
+          <Property Name="RType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="Capacity" Type="int" />
+        </EntityType>
+        <EntityType Name="ROOM_RESERVATION">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+            <PropertyRef Name="CheckInDate" />
+          </Key>
+          <Property Name="InvoiceNo" Type="int" />
+          <Property Name="HotelID" Type="int" Nullable="false" />
+          <Property Name="RoomNo" Type="int" Nullable="false" />
+          <Property Name="CheckInDate" Type="date" Nullable="false" />
+          <Property Name="CheckOutDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ROOM_REVIEW">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="decimal" Precision="11" Scale="11" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+          <Property Name="CID" Type="int" />
+          <Property Name="HotelID" Type="int" />
+          <Property Name="RoomNo" Type="int" />
+        </EntityType>
+        <EntityType Name="RRESV_BREAKFAST">
+          <Key>
+            <PropertyRef Name="BType" />
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+            <PropertyRef Name="CheckInDate" />
+          </Key>
+          <Property Name="BType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HotelID" Type="int" Nullable="false" />
+          <Property Name="RoomNo" Type="int" Nullable="false" />
+          <Property Name="CheckInDate" Type="date" Nullable="false" />
+          <Property Name="NoOfOrders" Type="int" />
+        </EntityType>
+        <EntityType Name="RRESV_SERVICE">
+          <Key>
+            <PropertyRef Name="SType" />
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+            <PropertyRef Name="CheckInDate" />
+          </Key>
+          <Property Name="SType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HotelID" Type="int" Nullable="false" />
+          <Property Name="RoomNo" Type="int" Nullable="false" />
+          <Property Name="CheckInDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="SType" />
+          </Key>
+          <Property Name="HotelID" Type="int" Nullable="false" />
+          <Property Name="SType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SPrice" Type="int" />
+        </EntityType>
+        <EntityType Name="SERVICE_REVIEW">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" Nullable="false" />
+          <Property Name="HotelID" Type="int" />
+          <Property Name="SType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Rating" Type="decimal" Precision="2" Scale="2" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_BREAKFAST_HOTEL">
+          <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+          <End Role="BREAKFAST" Type="Self.BREAKFAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOTEL">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="BREAKFAST">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BREAKFAST_REVIEW_BREAKFAST">
+          <End Role="BREAKFAST" Type="Self.BREAKFAST" Multiplicity="0..1" />
+          <End Role="BREAKFAST_REVIEW" Type="Self.BREAKFAST_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BREAKFAST">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="BType" />
+            </Principal>
+            <Dependent Role="BREAKFAST_REVIEW">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="BType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BREAKFAST_REVIEW_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="BREAKFAST_REVIEW" Type="Self.BREAKFAST_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="BREAKFAST_REVIEW">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DISCOUNTED_ROOM_ROOM">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+          <End Role="DISCOUNTED_ROOM" Type="Self.DISCOUNTED_ROOM" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+            </Principal>
+            <Dependent Role="DISCOUNTED_ROOM">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVATION_CREDIT_CARD">
+          <End Role="CREDIT_CARD" Type="Self.CREDIT_CARD" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT_CARD">
+              <PropertyRef Name="CNumber" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="CNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVATION_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_HOTEL">
+          <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOTEL">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="ROOM">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_RESERVATION_RESERVATION">
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="0..1" />
+          <End Role="ROOM_RESERVATION" Type="Self.ROOM_RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVATION">
+              <PropertyRef Name="InvoiceNo" />
+            </Principal>
+            <Dependent Role="ROOM_RESERVATION">
+              <PropertyRef Name="InvoiceNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_REVIEW_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="ROOM_REVIEW" Type="Self.ROOM_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="ROOM_REVIEW">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_REVIEW_ROOM">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+          <End Role="ROOM_REVIEW" Type="Self.ROOM_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+            </Principal>
+            <Dependent Role="ROOM_REVIEW">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RRESV_BREAKFAST_BREAKFAST">
+          <End Role="BREAKFAST" Type="Self.BREAKFAST" Multiplicity="1" />
+          <End Role="RRESV_BREAKFAST" Type="Self.RRESV_BREAKFAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BREAKFAST">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="BType" />
+            </Principal>
+            <Dependent Role="RRESV_BREAKFAST">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="BType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RRESV_BREAKFAST_ROOM_RESERVATION">
+          <End Role="ROOM_RESERVATION" Type="Self.ROOM_RESERVATION" Multiplicity="1" />
+          <End Role="RRESV_BREAKFAST" Type="Self.RRESV_BREAKFAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM_RESERVATION">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+              <PropertyRef Name="CheckInDate" />
+            </Principal>
+            <Dependent Role="RRESV_BREAKFAST">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+              <PropertyRef Name="CheckInDate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RRESV_SERVICE_ROOM_RESERVATION">
+          <End Role="ROOM_RESERVATION" Type="Self.ROOM_RESERVATION" Multiplicity="1" />
+          <End Role="RRESV_SERVICE" Type="Self.RRESV_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM_RESERVATION">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+              <PropertyRef Name="CheckInDate" />
+            </Principal>
+            <Dependent Role="RRESV_SERVICE">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+              <PropertyRef Name="CheckInDate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RRESV_SERVICE_SERVICE">
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="1" />
+          <End Role="RRESV_SERVICE" Type="Self.RRESV_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="SType" />
+            </Principal>
+            <Dependent Role="RRESV_SERVICE">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="SType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_HOTEL">
+          <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOTEL">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="SERVICE">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_REVIEW_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="SERVICE_REVIEW" Type="Self.SERVICE_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="SERVICE_REVIEW">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_REVIEW_SERVICE">
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="0..1" />
+          <End Role="SERVICE_REVIEW" Type="Self.SERVICE_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="SType" />
+            </Principal>
+            <Dependent Role="SERVICE_REVIEW">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="SType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_GET_AVAILABLE_ROOM_BY_FLOOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FloorNum" Type="int" Mode="In" />
+          <Parameter Name="RoomType" Type="nvarchar" Mode="In" />
+          <Parameter Name="HotelID" Type="int" Mode="In" />
+          <Parameter Name="AvailableRooms" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_GET_COUNTRIES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GET_FLOORS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoomType" Type="nvarchar" Mode="In" />
+          <Parameter Name="HotelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_HOTEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="State" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_ROOM_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoomType" Type="nvarchar" Mode="In" />
+          <Parameter Name="HotelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_ROOM_PRICE_BY_FLOOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FloorNum" Type="int" Mode="In" />
+          <Parameter Name="RoomType" Type="nvarchar" Mode="In" />
+          <Parameter Name="HotelID" Type="int" Mode="In" />
+          <Parameter Name="RPrice" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_GET_ROOM_TYPES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HotelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_ZIPCODES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_CUSTOMER_RECORD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FName" Type="nvarchar" Mode="In" />
+          <Parameter Name="MName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="PhoneNo" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_INSERT_HOTEL_RECORD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Street" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="State" Type="nvarchar" Mode="In" />
+          <Parameter Name="Zip" Type="nvarchar" Mode="In" />
+          <Parameter Name="HotelID" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="HotelTransylvaniaModelStoreContainer">
+          <EntitySet Name="BREAKFAST" EntityType="Self.BREAKFAST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BREAKFAST_REVIEW" EntityType="Self.BREAKFAST_REVIEW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CREDIT_CARD" EntityType="Self.CREDIT_CARD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DISCOUNTED_ROOM" EntityType="Self.DISCOUNTED_ROOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOTEL" EntityType="Self.HOTEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESERVATION" EntityType="Self.RESERVATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOM_RESERVATION" EntityType="Self.ROOM_RESERVATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOM_REVIEW" EntityType="Self.ROOM_REVIEW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RRESV_BREAKFAST" EntityType="Self.RRESV_BREAKFAST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RRESV_SERVICE" EntityType="Self.RRESV_SERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICE" EntityType="Self.SERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICE_REVIEW" EntityType="Self.SERVICE_REVIEW" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BREAKFAST_HOTEL" Association="Self.FK_BREAKFAST_HOTEL">
+            <End Role="HOTEL" EntitySet="HOTEL" />
+            <End Role="BREAKFAST" EntitySet="BREAKFAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BREAKFAST_REVIEW_BREAKFAST" Association="Self.FK_BREAKFAST_REVIEW_BREAKFAST">
+            <End Role="BREAKFAST" EntitySet="BREAKFAST" />
+            <End Role="BREAKFAST_REVIEW" EntitySet="BREAKFAST_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BREAKFAST_REVIEW_CUSTOMER" Association="Self.FK_BREAKFAST_REVIEW_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="BREAKFAST_REVIEW" EntitySet="BREAKFAST_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DISCOUNTED_ROOM_ROOM" Association="Self.FK_DISCOUNTED_ROOM_ROOM">
+            <End Role="ROOM" EntitySet="ROOM" />
+            <End Role="DISCOUNTED_ROOM" EntitySet="DISCOUNTED_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVATION_CREDIT_CARD" Association="Self.FK_RESERVATION_CREDIT_CARD">
+            <End Role="CREDIT_CARD" EntitySet="CREDIT_CARD" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVATION_CUSTOMER" Association="Self.FK_RESERVATION_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_HOTEL" Association="Self.FK_ROOM_HOTEL">
+            <End Role="HOTEL" EntitySet="HOTEL" />
+            <End Role="ROOM" EntitySet="ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_RESERVATION_RESERVATION" Association="Self.FK_ROOM_RESERVATION_RESERVATION">
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+            <End Role="ROOM_RESERVATION" EntitySet="ROOM_RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_REVIEW_CUSTOMER" Association="Self.FK_ROOM_REVIEW_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ROOM_REVIEW" EntitySet="ROOM_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_REVIEW_ROOM" Association="Self.FK_ROOM_REVIEW_ROOM">
+            <End Role="ROOM" EntitySet="ROOM" />
+            <End Role="ROOM_REVIEW" EntitySet="ROOM_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RRESV_BREAKFAST_BREAKFAST" Association="Self.FK_RRESV_BREAKFAST_BREAKFAST">
+            <End Role="BREAKFAST" EntitySet="BREAKFAST" />
+            <End Role="RRESV_BREAKFAST" EntitySet="RRESV_BREAKFAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RRESV_BREAKFAST_ROOM_RESERVATION" Association="Self.FK_RRESV_BREAKFAST_ROOM_RESERVATION">
+            <End Role="ROOM_RESERVATION" EntitySet="ROOM_RESERVATION" />
+            <End Role="RRESV_BREAKFAST" EntitySet="RRESV_BREAKFAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RRESV_SERVICE_ROOM_RESERVATION" Association="Self.FK_RRESV_SERVICE_ROOM_RESERVATION">
+            <End Role="ROOM_RESERVATION" EntitySet="ROOM_RESERVATION" />
+            <End Role="RRESV_SERVICE" EntitySet="RRESV_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RRESV_SERVICE_SERVICE" Association="Self.FK_RRESV_SERVICE_SERVICE">
+            <End Role="SERVICE" EntitySet="SERVICE" />
+            <End Role="RRESV_SERVICE" EntitySet="RRESV_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_HOTEL" Association="Self.FK_SERVICE_HOTEL">
+            <End Role="HOTEL" EntitySet="HOTEL" />
+            <End Role="SERVICE" EntitySet="SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_REVIEW_CUSTOMER" Association="Self.FK_SERVICE_REVIEW_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="SERVICE_REVIEW" EntitySet="SERVICE_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_REVIEW_SERVICE" Association="Self.FK_SERVICE_REVIEW_SERVICE">
+            <End Role="SERVICE" EntitySet="SERVICE" />
+            <End Role="SERVICE_REVIEW" EntitySet="SERVICE_REVIEW" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelTransylvaniaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BREAKFAST">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="BType" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" Nullable="false" />
+          <Property Name="BType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BPrice" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HOTEL" Relationship="Self.FK_BREAKFAST_HOTEL" FromRole="BREAKFAST" ToRole="HOTEL" />
+          <NavigationProperty Name="BREAKFAST_REVIEW" Relationship="Self.FK_BREAKFAST_REVIEW_BREAKFAST" FromRole="BREAKFAST" ToRole="BREAKFAST_REVIEW" />
+          <NavigationProperty Name="RRESV_BREAKFAST" Relationship="Self.FK_RRESV_BREAKFAST_BREAKFAST" FromRole="BREAKFAST" ToRole="RRESV_BREAKFAST" />
+        </EntityType>
+        <EntityType Name="BREAKFAST_REVIEW">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" />
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="BType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Decimal" Precision="2" Scale="2" />
+          <NavigationProperty Name="BREAKFAST" Relationship="Self.FK_BREAKFAST_REVIEW_BREAKFAST" FromRole="BREAKFAST_REVIEW" ToRole="BREAKFAST" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_BREAKFAST_REVIEW_CUSTOMER" FromRole="BREAKFAST_REVIEW" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="CREDIT_CARD">
+          <Key>
+            <PropertyRef Name="CNumber" />
+          </Key>
+          <Property Name="CNumber" Type="Int32" Nullable="false" />
+          <Property Name="CType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Baddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="ExpDate" Type="DateTime" Precision="0" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RESERVATIONs" Relationship="Self.FK_RESERVATION_CREDIT_CARD" FromRole="CREDIT_CARD" ToRole="RESERVATION" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_No" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BREAKFAST_REVIEW" Relationship="Self.FK_BREAKFAST_REVIEW_CUSTOMER" FromRole="CUSTOMER" ToRole="BREAKFAST_REVIEW" />
+          <NavigationProperty Name="RESERVATIONs" Relationship="Self.FK_RESERVATION_CUSTOMER" FromRole="CUSTOMER" ToRole="RESERVATION" />
+          <NavigationProperty Name="ROOM_REVIEW" Relationship="Self.FK_ROOM_REVIEW_CUSTOMER" FromRole="CUSTOMER" ToRole="ROOM_REVIEW" />
+          <NavigationProperty Name="SERVICE_REVIEW" Relationship="Self.FK_SERVICE_REVIEW_CUSTOMER" FromRole="CUSTOMER" ToRole="SERVICE_REVIEW" />
+        </EntityType>
+        <EntityType Name="DISCOUNTED_ROOM">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="11" Scale="11" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ROOM" Relationship="Self.FK_DISCOUNTED_ROOM_ROOM" FromRole="DISCOUNTED_ROOM" ToRole="ROOM" />
+        </EntityType>
+        <EntityType Name="HOTEL">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BREAKFASTs" Relationship="Self.FK_BREAKFAST_HOTEL" FromRole="HOTEL" ToRole="BREAKFAST" />
+          <NavigationProperty Name="ROOMs" Relationship="Self.FK_ROOM_HOTEL" FromRole="HOTEL" ToRole="ROOM" />
+          <NavigationProperty Name="SERVICEs" Relationship="Self.FK_SERVICE_HOTEL" FromRole="HOTEL" ToRole="SERVICE" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="InvoiceNo" />
+          </Key>
+          <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="CNumber" Type="Int32" />
+          <Property Name="RDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CREDIT_CARD" Relationship="Self.FK_RESERVATION_CREDIT_CARD" FromRole="RESERVATION" ToRole="CREDIT_CARD" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_RESERVATION_CUSTOMER" FromRole="RESERVATION" ToRole="CUSTOMER" />
+          <NavigationProperty Name="ROOM_RESERVATION" Relationship="Self.FK_ROOM_RESERVATION_RESERVATION" FromRole="RESERVATION" ToRole="ROOM_RESERVATION" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
+          <Property Name="RType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="Capacity" Type="Int32" />
+          <NavigationProperty Name="DISCOUNTED_ROOM" Relationship="Self.FK_DISCOUNTED_ROOM_ROOM" FromRole="ROOM" ToRole="DISCOUNTED_ROOM" />
+          <NavigationProperty Name="HOTEL" Relationship="Self.FK_ROOM_HOTEL" FromRole="ROOM" ToRole="HOTEL" />
+          <NavigationProperty Name="ROOM_REVIEW" Relationship="Self.FK_ROOM_REVIEW_ROOM" FromRole="ROOM" ToRole="ROOM_REVIEW" />
+        </EntityType>
+        <EntityType Name="ROOM_RESERVATION">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+            <PropertyRef Name="CheckInDate" />
+          </Key>
+          <Property Name="InvoiceNo" Type="Int32" />
+          <Property Name="HotelID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
+          <Property Name="CheckInDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CheckOutDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="RESERVATION" Relationship="Self.FK_ROOM_RESERVATION_RESERVATION" FromRole="ROOM_RESERVATION" ToRole="RESERVATION" />
+          <NavigationProperty Name="RRESV_BREAKFAST" Relationship="Self.FK_RRESV_BREAKFAST_ROOM_RESERVATION" FromRole="ROOM_RESERVATION" ToRole="RRESV_BREAKFAST" />
+          <NavigationProperty Name="RRESV_SERVICE" Relationship="Self.FK_RRESV_SERVICE_ROOM_RESERVATION" FromRole="ROOM_RESERVATION" ToRole="RRESV_SERVICE" />
+        </EntityType>
+        <EntityType Name="ROOM_REVIEW">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Decimal" Precision="11" Scale="11" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="RoomNo" Type="Int32" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_ROOM_REVIEW_CUSTOMER" FromRole="ROOM_REVIEW" ToRole="CUSTOMER" />
+          <NavigationProperty Name="ROOM" Relationship="Self.FK_ROOM_REVIEW_ROOM" FromRole="ROOM_REVIEW" ToRole="ROOM" />
+        </EntityType>
+        <EntityType Name="RRESV_BREAKFAST">
+          <Key>
+            <PropertyRef Name="BType" />
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+            <PropertyRef Name="CheckInDate" />
+          </Key>
+          <Property Name="BType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotelID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
+          <Property Name="CheckInDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NoOfOrders" Type="Int32" />
+          <NavigationProperty Name="BREAKFAST" Relationship="Self.FK_RRESV_BREAKFAST_BREAKFAST" FromRole="RRESV_BREAKFAST" ToRole="BREAKFAST" />
+          <NavigationProperty Name="ROOM_RESERVATION" Relationship="Self.FK_RRESV_BREAKFAST_ROOM_RESERVATION" FromRole="RRESV_BREAKFAST" ToRole="ROOM_RESERVATION" />
+        </EntityType>
+        <EntityType Name="RRESV_SERVICE">
+          <Key>
+            <PropertyRef Name="SType" />
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="RoomNo" />
+            <PropertyRef Name="CheckInDate" />
+          </Key>
+          <Property Name="SType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotelID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
+          <Property Name="CheckInDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ROOM_RESERVATION" Relationship="Self.FK_RRESV_SERVICE_ROOM_RESERVATION" FromRole="RRESV_SERVICE" ToRole="ROOM_RESERVATION" />
+          <NavigationProperty Name="SERVICE" Relationship="Self.FK_RRESV_SERVICE_SERVICE" FromRole="RRESV_SERVICE" ToRole="SERVICE" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="HotelID" />
+            <PropertyRef Name="SType" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" Nullable="false" />
+          <Property Name="SType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SPrice" Type="Int32" />
+          <NavigationProperty Name="HOTEL" Relationship="Self.FK_SERVICE_HOTEL" FromRole="SERVICE" ToRole="HOTEL" />
+          <NavigationProperty Name="RRESV_SERVICE" Relationship="Self.FK_RRESV_SERVICE_SERVICE" FromRole="SERVICE" ToRole="RRESV_SERVICE" />
+          <NavigationProperty Name="SERVICE_REVIEW" Relationship="Self.FK_SERVICE_REVIEW_SERVICE" FromRole="SERVICE" ToRole="SERVICE_REVIEW" />
+        </EntityType>
+        <EntityType Name="SERVICE_REVIEW">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" />
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="SType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Rating" Type="Decimal" Precision="2" Scale="2" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SERVICE_REVIEW_CUSTOMER" FromRole="SERVICE_REVIEW" ToRole="CUSTOMER" />
+          <NavigationProperty Name="SERVICE" Relationship="Self.FK_SERVICE_REVIEW_SERVICE" FromRole="SERVICE_REVIEW" ToRole="SERVICE" />
+        </EntityType>
+        <Association Name="FK_BREAKFAST_HOTEL">
+          <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+          <End Role="BREAKFAST" Type="Self.BREAKFAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOTEL">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="BREAKFAST">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BREAKFAST_REVIEW_BREAKFAST">
+          <End Role="BREAKFAST" Type="Self.BREAKFAST" Multiplicity="0..1" />
+          <End Role="BREAKFAST_REVIEW" Type="Self.BREAKFAST_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BREAKFAST">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="BType" />
+            </Principal>
+            <Dependent Role="BREAKFAST_REVIEW">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="BType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RRESV_BREAKFAST_BREAKFAST">
+          <End Role="BREAKFAST" Type="Self.BREAKFAST" Multiplicity="1" />
+          <End Role="RRESV_BREAKFAST" Type="Self.RRESV_BREAKFAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BREAKFAST">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="BType" />
+            </Principal>
+            <Dependent Role="RRESV_BREAKFAST">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="BType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BREAKFAST_REVIEW_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="BREAKFAST_REVIEW" Type="Self.BREAKFAST_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="BREAKFAST_REVIEW">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVATION_CREDIT_CARD">
+          <End Role="CREDIT_CARD" Type="Self.CREDIT_CARD" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT_CARD">
+              <PropertyRef Name="CNumber" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="CNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVATION_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_REVIEW_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="ROOM_REVIEW" Type="Self.ROOM_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="ROOM_REVIEW">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_REVIEW_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="SERVICE_REVIEW" Type="Self.SERVICE_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="SERVICE_REVIEW">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DISCOUNTED_ROOM_ROOM">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+          <End Role="DISCOUNTED_ROOM" Type="Self.DISCOUNTED_ROOM" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+            </Principal>
+            <Dependent Role="DISCOUNTED_ROOM">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_HOTEL">
+          <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOTEL">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="ROOM">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_HOTEL">
+          <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOTEL">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="SERVICE">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_RESERVATION_RESERVATION">
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="0..1" />
+          <End Role="ROOM_RESERVATION" Type="Self.ROOM_RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVATION">
+              <PropertyRef Name="InvoiceNo" />
+            </Principal>
+            <Dependent Role="ROOM_RESERVATION">
+              <PropertyRef Name="InvoiceNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_REVIEW_ROOM">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+          <End Role="ROOM_REVIEW" Type="Self.ROOM_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+            </Principal>
+            <Dependent Role="ROOM_REVIEW">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RRESV_BREAKFAST_ROOM_RESERVATION">
+          <End Role="ROOM_RESERVATION" Type="Self.ROOM_RESERVATION" Multiplicity="1" />
+          <End Role="RRESV_BREAKFAST" Type="Self.RRESV_BREAKFAST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM_RESERVATION">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+              <PropertyRef Name="CheckInDate" />
+            </Principal>
+            <Dependent Role="RRESV_BREAKFAST">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+              <PropertyRef Name="CheckInDate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RRESV_SERVICE_ROOM_RESERVATION">
+          <End Role="ROOM_RESERVATION" Type="Self.ROOM_RESERVATION" Multiplicity="1" />
+          <End Role="RRESV_SERVICE" Type="Self.RRESV_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM_RESERVATION">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+              <PropertyRef Name="CheckInDate" />
+            </Principal>
+            <Dependent Role="RRESV_SERVICE">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="RoomNo" />
+              <PropertyRef Name="CheckInDate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RRESV_SERVICE_SERVICE">
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="1" />
+          <End Role="RRESV_SERVICE" Type="Self.RRESV_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="SType" />
+            </Principal>
+            <Dependent Role="RRESV_SERVICE">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="SType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_REVIEW_SERVICE">
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="0..1" />
+          <End Role="SERVICE_REVIEW" Type="Self.SERVICE_REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="SType" />
+            </Principal>
+            <Dependent Role="SERVICE_REVIEW">
+              <PropertyRef Name="HotelID" />
+              <PropertyRef Name="SType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelTransylvaniaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BREAKFASTs" EntityType="Self.BREAKFAST" />
+          <EntitySet Name="BREAKFAST_REVIEW" EntityType="Self.BREAKFAST_REVIEW" />
+          <EntitySet Name="CREDIT_CARD" EntityType="Self.CREDIT_CARD" />
+          <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="DISCOUNTED_ROOM" EntityType="Self.DISCOUNTED_ROOM" />
+          <EntitySet Name="HOTELs" EntityType="Self.HOTEL" />
+          <EntitySet Name="RESERVATIONs" EntityType="Self.RESERVATION" />
+          <EntitySet Name="ROOMs" EntityType="Self.ROOM" />
+          <EntitySet Name="ROOM_RESERVATION" EntityType="Self.ROOM_RESERVATION" />
+          <EntitySet Name="ROOM_REVIEW" EntityType="Self.ROOM_REVIEW" />
+          <EntitySet Name="RRESV_BREAKFAST" EntityType="Self.RRESV_BREAKFAST" />
+          <EntitySet Name="RRESV_SERVICE" EntityType="Self.RRESV_SERVICE" />
+          <EntitySet Name="SERVICEs" EntityType="Self.SERVICE" />
+          <EntitySet Name="SERVICE_REVIEW" EntityType="Self.SERVICE_REVIEW" />
+          <AssociationSet Name="FK_BREAKFAST_HOTEL" Association="Self.FK_BREAKFAST_HOTEL">
+            <End Role="HOTEL" EntitySet="HOTELs" />
+            <End Role="BREAKFAST" EntitySet="BREAKFASTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BREAKFAST_REVIEW_BREAKFAST" Association="Self.FK_BREAKFAST_REVIEW_BREAKFAST">
+            <End Role="BREAKFAST" EntitySet="BREAKFASTs" />
+            <End Role="BREAKFAST_REVIEW" EntitySet="BREAKFAST_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RRESV_BREAKFAST_BREAKFAST" Association="Self.FK_RRESV_BREAKFAST_BREAKFAST">
+            <End Role="BREAKFAST" EntitySet="BREAKFASTs" />
+            <End Role="RRESV_BREAKFAST" EntitySet="RRESV_BREAKFAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BREAKFAST_REVIEW_CUSTOMER" Association="Self.FK_BREAKFAST_REVIEW_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="BREAKFAST_REVIEW" EntitySet="BREAKFAST_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVATION_CREDIT_CARD" Association="Self.FK_RESERVATION_CREDIT_CARD">
+            <End Role="CREDIT_CARD" EntitySet="CREDIT_CARD" />
+            <End Role="RESERVATION" EntitySet="RESERVATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVATION_CUSTOMER" Association="Self.FK_RESERVATION_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="RESERVATION" EntitySet="RESERVATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_REVIEW_CUSTOMER" Association="Self.FK_ROOM_REVIEW_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="ROOM_REVIEW" EntitySet="ROOM_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_REVIEW_CUSTOMER" Association="Self.FK_SERVICE_REVIEW_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="SERVICE_REVIEW" EntitySet="SERVICE_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DISCOUNTED_ROOM_ROOM" Association="Self.FK_DISCOUNTED_ROOM_ROOM">
+            <End Role="ROOM" EntitySet="ROOMs" />
+            <End Role="DISCOUNTED_ROOM" EntitySet="DISCOUNTED_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_HOTEL" Association="Self.FK_ROOM_HOTEL">
+            <End Role="HOTEL" EntitySet="HOTELs" />
+            <End Role="ROOM" EntitySet="ROOMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_HOTEL" Association="Self.FK_SERVICE_HOTEL">
+            <End Role="HOTEL" EntitySet="HOTELs" />
+            <End Role="SERVICE" EntitySet="SERVICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_RESERVATION_RESERVATION" Association="Self.FK_ROOM_RESERVATION_RESERVATION">
+            <End Role="RESERVATION" EntitySet="RESERVATIONs" />
+            <End Role="ROOM_RESERVATION" EntitySet="ROOM_RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_REVIEW_ROOM" Association="Self.FK_ROOM_REVIEW_ROOM">
+            <End Role="ROOM" EntitySet="ROOMs" />
+            <End Role="ROOM_REVIEW" EntitySet="ROOM_REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RRESV_BREAKFAST_ROOM_RESERVATION" Association="Self.FK_RRESV_BREAKFAST_ROOM_RESERVATION">
+            <End Role="ROOM_RESERVATION" EntitySet="ROOM_RESERVATION" />
+            <End Role="RRESV_BREAKFAST" EntitySet="RRESV_BREAKFAST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RRESV_SERVICE_ROOM_RESERVATION" Association="Self.FK_RRESV_SERVICE_ROOM_RESERVATION">
+            <End Role="ROOM_RESERVATION" EntitySet="ROOM_RESERVATION" />
+            <End Role="RRESV_SERVICE" EntitySet="RRESV_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RRESV_SERVICE_SERVICE" Association="Self.FK_RRESV_SERVICE_SERVICE">
+            <End Role="SERVICE" EntitySet="SERVICEs" />
+            <End Role="RRESV_SERVICE" EntitySet="RRESV_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_REVIEW_SERVICE" Association="Self.FK_SERVICE_REVIEW_SERVICE">
+            <End Role="SERVICE" EntitySet="SERVICEs" />
+            <End Role="SERVICE_REVIEW" EntitySet="SERVICE_REVIEW" />
+          </AssociationSet>
+          <FunctionImport Name="SP_GET_AVAILABLE_ROOM_BY_FLOOR">
+            <Parameter Name="FloorNum" Mode="In" Type="Int32" />
+            <Parameter Name="RoomType" Mode="In" Type="String" />
+            <Parameter Name="HotelID" Mode="In" Type="Int32" />
+            <Parameter Name="AvailableRooms" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_COUNTRIES" ReturnType="Collection(String)" />
+          <FunctionImport Name="SP_GET_FLOORS" ReturnType="Collection(Int32)">
+            <Parameter Name="RoomType" Mode="In" Type="String" />
+            <Parameter Name="HotelID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_HOTEL" ReturnType="Collection(HotelTransylvaniaModel.SP_GET_HOTEL_Result)">
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_ROOM_DETAILS" ReturnType="Collection(HotelTransylvaniaModel.SP_GET_ROOM_DETAILS_Result)">
+            <Parameter Name="RoomType" Mode="In" Type="String" />
+            <Parameter Name="HotelID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_ROOM_PRICE_BY_FLOOR">
+            <Parameter Name="FloorNum" Mode="In" Type="Int32" />
+            <Parameter Name="RoomType" Mode="In" Type="String" />
+            <Parameter Name="HotelID" Mode="In" Type="Int32" />
+            <Parameter Name="RPrice" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_ROOM_TYPES" ReturnType="Collection(String)">
+          <Parameter Name="HotelID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_ZIPCODES" ReturnType="Collection(String)">
+          <Parameter Name="Country" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_CUSTOMER_RECORD">
+            <Parameter Name="FName" Mode="In" Type="String" />
+            <Parameter Name="MName" Mode="In" Type="String" />
+            <Parameter Name="LName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="PhoneNo" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CustID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_HOTEL_RECORD">
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+            <Parameter Name="HotelID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_GET_HOTEL_Result">
+          <Property Type="Int32" Name="HotelID" Nullable="false" />
+          <Property Type="String" Name="Street" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Zip" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_ROOM_DETAILS_Result">
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Capacity" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelTransylvaniaModelStoreContainer" CdmEntityContainer="HotelTransylvaniaEntities">
+          <EntitySetMapping Name="BREAKFASTs">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.BREAKFAST">
+              <MappingFragment StoreEntitySet="BREAKFAST">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="BType" ColumnName="BType" />
+                <ScalarProperty Name="BPrice" ColumnName="BPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BREAKFAST_REVIEW">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.BREAKFAST_REVIEW">
+              <MappingFragment StoreEntitySet="BREAKFAST_REVIEW">
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="BType" ColumnName="BType" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CREDIT_CARD">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.CREDIT_CARD">
+              <MappingFragment StoreEntitySet="CREDIT_CARD">
+                <ScalarProperty Name="CNumber" ColumnName="CNumber" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="Baddress" ColumnName="Baddress" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone_No" ColumnName="Phone_No" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISCOUNTED_ROOM">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.DISCOUNTED_ROOM">
+              <MappingFragment StoreEntitySet="DISCOUNTED_ROOM">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOTELs">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.HOTEL">
+              <MappingFragment StoreEntitySet="HOTEL">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVATIONs">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.RESERVATION">
+              <MappingFragment StoreEntitySet="RESERVATION">
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="CNumber" ColumnName="CNumber" />
+                <ScalarProperty Name="RDate" ColumnName="RDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOMs">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.ROOM">
+              <MappingFragment StoreEntitySet="ROOM">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="RType" ColumnName="RType" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOM_RESERVATION">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.ROOM_RESERVATION">
+              <MappingFragment StoreEntitySet="ROOM_RESERVATION">
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+                <ScalarProperty Name="CheckOutDate" ColumnName="CheckOutDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOM_REVIEW">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.ROOM_REVIEW">
+              <MappingFragment StoreEntitySet="ROOM_REVIEW">
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RRESV_BREAKFAST">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.RRESV_BREAKFAST">
+              <MappingFragment StoreEntitySet="RRESV_BREAKFAST">
+                <ScalarProperty Name="BType" ColumnName="BType" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+                <ScalarProperty Name="NoOfOrders" ColumnName="NoOfOrders" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RRESV_SERVICE">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.RRESV_SERVICE">
+              <MappingFragment StoreEntitySet="RRESV_SERVICE">
+                <ScalarProperty Name="SType" ColumnName="SType" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICEs">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.SERVICE">
+              <MappingFragment StoreEntitySet="SERVICE">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="SType" ColumnName="SType" />
+                <ScalarProperty Name="SPrice" ColumnName="SPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICE_REVIEW">
+            <EntityTypeMapping TypeName="HotelTransylvaniaModel.SERVICE_REVIEW">
+              <MappingFragment StoreEntitySet="SERVICE_REVIEW">
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="SType" ColumnName="SType" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_AVAILABLE_ROOM_BY_FLOOR" FunctionName="HotelTransylvaniaModel.Store.SP_GET_AVAILABLE_ROOM_BY_FLOOR" />
+          <FunctionImportMapping FunctionImportName="SP_GET_COUNTRIES" FunctionName="HotelTransylvaniaModel.Store.SP_GET_COUNTRIES" />
+          <FunctionImportMapping FunctionImportName="SP_GET_FLOORS" FunctionName="HotelTransylvaniaModel.Store.SP_GET_FLOORS" />
+          <FunctionImportMapping FunctionImportName="SP_GET_HOTEL" FunctionName="HotelTransylvaniaModel.Store.SP_GET_HOTEL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_HOTEL_Result">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_ROOM_DETAILS" FunctionName="HotelTransylvaniaModel.Store.SP_GET_ROOM_DETAILS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_ROOM_DETAILS_Result">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_ROOM_PRICE_BY_FLOOR" FunctionName="HotelTransylvaniaModel.Store.SP_GET_ROOM_PRICE_BY_FLOOR" />
+          <FunctionImportMapping FunctionImportName="SP_GET_ROOM_TYPES" FunctionName="HotelTransylvaniaModel.Store.SP_GET_ROOM_TYPES" />
+          <FunctionImportMapping FunctionImportName="SP_GET_ZIPCODES" FunctionName="HotelTransylvaniaModel.Store.SP_GET_ZIPCODES" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_CUSTOMER_RECORD" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_CUSTOMER_RECORD" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_HOTEL_RECORD" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_HOTEL_RECORD" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

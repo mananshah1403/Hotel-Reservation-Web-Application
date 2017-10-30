@@ -1,0 +1,88 @@
+﻿@model IEnumerable<HotelComponent.ROOM>
+
+@{
+    ViewBag.Title = "RoomDetails";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>RoomDetails</h2>
+<h4>Room Booking</h4>
+
+@using (Html.BeginForm())
+{
+    <table align="center">
+        <tr>
+            <td width="150px">
+                Enter Check In Date
+            </td>
+            <td>
+                <input id="ChkInDate" name="ChkInDate" type="date" />
+            </td>
+            <td width="150px" align="center">
+                Enter Check Out Date
+            </td>
+            <td>
+                <input id="ChkOutDate" name="ChkOutDate" type="date" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center">
+                <br/>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+}
+<br/>
+<br/>
+@if (ViewBag.ShowRoomDetail)
+{
+    <table class="table" align="center" width="100%">
+
+        <tr>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.RoomNo)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.RType)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th align="center">
+                Book Room
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.ActionLink("Book", "ShowBreakfast", "Breakfast", new { RoomNo = item.RoomNo, Capacity = item.Capacity }, true)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+

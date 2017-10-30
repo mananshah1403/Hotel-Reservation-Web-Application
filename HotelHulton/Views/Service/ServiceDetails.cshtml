@@ -1,0 +1,30 @@
+﻿@model IEnumerable<HotelComponent.SERVICE>
+
+@{
+    ViewBag.Title = "ServiceDetails";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>ServiceDetails</h2>
+<h4>Select Services</h4>
+@using (Html.BeginForm())
+{
+    <table>
+
+        @foreach (string option in ViewBag.Services)
+        {
+        <tr>
+            <td>
+                <input type='checkbox' name='checkboxes' value="@option" />
+                @option
+            </td>
+        </tr>
+        }
+        <tr>
+            <td>
+                <br />
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+    </table>
+
+}

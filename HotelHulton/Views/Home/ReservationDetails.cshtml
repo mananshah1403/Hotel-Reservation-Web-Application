@@ -1,0 +1,147 @@
+﻿@model IEnumerable<HotelComponent.ROOM_RESERVATION>
+
+@{
+    ViewBag.Title = "ReservationDetails";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>ReservationDetails</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<h2>Rooms</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RESERVATION.InvoiceNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RESERVATION.RDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckInDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckOutDate)
+        </th>
+        <th>Review</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RESERVATION.RDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckInDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckOutDate)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Review", "Review", "Review", new { HotelId = item.HotelID, RoomNo = item.RoomNo }, true)
+        </td>
+    </tr>
+}
+
+</table>
+<h2>Breakfasts</h2>
+<table class="table">
+    <tr>
+        <th>
+            BType
+        </th>
+        <th>
+           HotelID
+        </th>
+        <th>
+            RoomNo
+        </th>
+        <th>
+           CheckInDate
+        </th>
+        <th>Review</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        foreach (var x in item.RRESV_BREAKFAST)
+        {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => x.BType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.HotelID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.RoomNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.CheckInDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Review", "BreakFastReview", "Review", new { HotelID = x.HotelID, BType = x.BType }, true)
+                </td>
+            
+        </tr>
+        }
+    }
+
+</table>
+<h2>Services</h2>
+<table class="table">
+    <tr>
+        <th>
+            SType
+        </th>
+        <th>
+            HotelID
+        </th>
+        <th>
+            RoomNo
+        </th>
+        <th>
+            CheckInDate
+        </th>
+        <th>Review</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        foreach (var x in item.RRESV_SERVICE)
+        {
+        <tr>
+            
+                <td>
+                    @Html.DisplayFor(modelItem => x.SType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.HotelID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.RoomNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.CheckInDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Review", "ServiceReview", "Review", new { HotelID = x.HotelID, SType = x.SType }, true)
+                </td>
+            
+        </tr>
+        }
+    }
+
+</table>

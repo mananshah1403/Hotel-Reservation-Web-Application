@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HotelTransylvaniaModelStoreContainer" CdmEntityContainer="HotelTransylvaniaEntities">
+    <EntitySetMapping Name="BREAKFASTs">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.BREAKFAST">
+        <MappingFragment StoreEntitySet="BREAKFAST">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="BType" ColumnName="BType" />
+          <ScalarProperty Name="BPrice" ColumnName="BPrice" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BREAKFAST_REVIEW">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.BREAKFAST_REVIEW">
+        <MappingFragment StoreEntitySet="BREAKFAST_REVIEW">
+          <ScalarProperty Name="RID" ColumnName="RID" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="BType" ColumnName="BType" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CREDIT_CARD">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.CREDIT_CARD">
+        <MappingFragment StoreEntitySet="CREDIT_CARD">
+          <ScalarProperty Name="CNumber" ColumnName="CNumber" />
+          <ScalarProperty Name="CType" ColumnName="CType" />
+          <ScalarProperty Name="Baddress" ColumnName="Baddress" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone_No" ColumnName="Phone_No" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISCOUNTED_ROOM">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.DISCOUNTED_ROOM">
+        <MappingFragment StoreEntitySet="DISCOUNTED_ROOM">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOTELs">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.HOTEL">
+        <MappingFragment StoreEntitySet="HOTEL">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESERVATIONs">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.RESERVATION">
+        <MappingFragment StoreEntitySet="RESERVATION">
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="CNumber" ColumnName="CNumber" />
+          <ScalarProperty Name="RDate" ColumnName="RDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROOMs">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.ROOM">
+        <MappingFragment StoreEntitySet="ROOM">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="RType" ColumnName="RType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROOM_RESERVATION">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.ROOM_RESERVATION">
+        <MappingFragment StoreEntitySet="ROOM_RESERVATION">
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+          <ScalarProperty Name="CheckOutDate" ColumnName="CheckOutDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROOM_REVIEW">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.ROOM_REVIEW">
+        <MappingFragment StoreEntitySet="ROOM_REVIEW">
+          <ScalarProperty Name="RID" ColumnName="RID" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RRESV_BREAKFAST">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.RRESV_BREAKFAST">
+        <MappingFragment StoreEntitySet="RRESV_BREAKFAST">
+          <ScalarProperty Name="BType" ColumnName="BType" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+          <ScalarProperty Name="NoOfOrders" ColumnName="NoOfOrders" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RRESV_SERVICE">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.RRESV_SERVICE">
+        <MappingFragment StoreEntitySet="RRESV_SERVICE">
+          <ScalarProperty Name="SType" ColumnName="SType" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERVICEs">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.SERVICE">
+        <MappingFragment StoreEntitySet="SERVICE">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="SType" ColumnName="SType" />
+          <ScalarProperty Name="SPrice" ColumnName="SPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERVICE_REVIEW">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.SERVICE_REVIEW">
+        <MappingFragment StoreEntitySet="SERVICE_REVIEW">
+          <ScalarProperty Name="RID" ColumnName="RID" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="SType" ColumnName="SType" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BestBreakfasts">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.BestBreakfast">
+        <MappingFragment StoreEntitySet="BestBreakfasts">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="BType" ColumnName="BType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BestCustomers">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.BestCustomer">
+        <MappingFragment StoreEntitySet="BestCustomers">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BestRoomTypes">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.BestRoomType">
+        <MappingFragment StoreEntitySet="BestRoomTypes">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RType" ColumnName="RType" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BestServices">
+      <EntityTypeMapping TypeName="HotelTransylvaniaModel.BestService">
+        <MappingFragment StoreEntitySet="BestServices">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="SType" ColumnName="SType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_AVAILABLE_ROOM_BY_FLOOR" FunctionName="HotelTransylvaniaModel.Store.SP_GET_AVAILABLE_ROOM_BY_FLOOR" />
+    <FunctionImportMapping FunctionImportName="SP_GET_AVAILABLE_ROOMS" FunctionName="HotelTransylvaniaModel.Store.SP_GET_AVAILABLE_ROOMS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_AVAILABLE_ROOMS_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="RType" ColumnName="RType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_BREAKFAST" FunctionName="HotelTransylvaniaModel.Store.SP_GET_BREAKFAST">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_BREAKFAST_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="BType" ColumnName="BType" />
+          <ScalarProperty Name="BPrice" ColumnName="BPrice" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_COUNTRIES" FunctionName="HotelTransylvaniaModel.Store.SP_GET_COUNTRIES" />
+    <FunctionImportMapping FunctionImportName="SP_GET_FLOORS" FunctionName="HotelTransylvaniaModel.Store.SP_GET_FLOORS" />
+    <FunctionImportMapping FunctionImportName="SP_GET_HOTEL" FunctionName="HotelTransylvaniaModel.Store.SP_GET_HOTEL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_HOTEL_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_ROOM_DETAILS" FunctionName="HotelTransylvaniaModel.Store.SP_GET_ROOM_DETAILS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_ROOM_DETAILS_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="RType" ColumnName="RType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_ROOM_PRICE_BY_FLOOR" FunctionName="HotelTransylvaniaModel.Store.SP_GET_ROOM_PRICE_BY_FLOOR" />
+    <FunctionImportMapping FunctionImportName="SP_GET_ROOM_TYPES" FunctionName="HotelTransylvaniaModel.Store.SP_GET_ROOM_TYPES" />
+    <FunctionImportMapping FunctionImportName="SP_GET_SELECTED_ROOM" FunctionName="HotelTransylvaniaModel.Store.SP_GET_SELECTED_ROOM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_SELECTED_ROOM_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="RType" ColumnName="RType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_SERVICE" FunctionName="HotelTransylvaniaModel.Store.SP_GET_SERVICE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_SERVICE_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="SType" ColumnName="SType" />
+          <ScalarProperty Name="SPrice" ColumnName="SPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_TOP_BREAKFASTS" FunctionName="HotelTransylvaniaModel.Store.SP_GET_TOP_BREAKFASTS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_TOP_BREAKFASTS_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="BType" ColumnName="BType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_TOP_ROOMS" FunctionName="HotelTransylvaniaModel.Store.SP_GET_TOP_ROOMS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_TOP_ROOMS_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RType" ColumnName="RType" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_TOP_SERVICES" FunctionName="HotelTransylvaniaModel.Store.SP_GET_TOP_SERVICES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_TOP_SERVICES_Result">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="SType" ColumnName="SType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_TOP5_CUSTOMERS" FunctionName="HotelTransylvaniaModel.Store.SP_GET_TOP5_CUSTOMERS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransylvaniaModel.SP_GET_TOP5_CUSTOMERS_Result">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_ZIPCODES" FunctionName="HotelTransylvaniaModel.Store.SP_GET_ZIPCODES" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_BREAKFAST_RECORD" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_BREAKFAST_RECORD" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_BREAKFAST_RESERVATION_DETAIL" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_BREAKFAST_RESERVATION_DETAIL" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_BREAKFAST_REVIEW" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_BREAKFAST_REVIEW" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_CREDIT_CARD_DETAIL" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_CREDIT_CARD_DETAIL" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_CUSTOMER_RECORD" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_CUSTOMER_RECORD" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_DISCOUNT_ROOM_RECORD" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_DISCOUNT_ROOM_RECORD" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_HOTEL_RECORD" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_HOTEL_RECORD" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_ROOM_RECORD" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_ROOM_RECORD" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_ROOM_RESERVATION_DETAIL" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_ROOM_RESERVATION_DETAIL" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_ROOM_REVIEW" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_ROOM_REVIEW" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_SERVICE_RECORD" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_SERVICE_RECORD" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_SERVICE_RESERVATION_DETAIL" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_SERVICE_RESERVATION_DETAIL" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_SERVICE_REVIEW" FunctionName="HotelTransylvaniaModel.Store.SP_INSERT_SERVICE_REVIEW" />
+  </EntityContainerMapping>
+</Mapping>

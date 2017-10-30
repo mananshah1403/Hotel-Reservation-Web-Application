@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HotelComponent.BREAKFAST>
+
+@{
+    ViewBag.Title = "ShowBreakfast";
+}
+<h2>Breakfast</h2>
+<h4>Order Breakfast</h4>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<br/>
+<div style="text-decoration:solid">The maximum number of orders you can place are @ViewBag.Capacity</div>
+<br/>
+@using (Html.BeginForm())
+{
+    <table class="table" align="center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Servings
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <input id="@(item.BType)" name="@(item.BType)" type="text" />
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="4" align="center">
+                <input type="submit" value="Place Order" />
+            </td>
+        </tr>
+        @if (ViewBag.ShowError)
+        {
+            <tr>
+                <td colspan="4" align="center">
+                    <div style="color:red;">**The maximum number of orders you can place are @ViewBag.Capacity</div>
+                </td>
+            </tr>
+        }
+    </table>
+}

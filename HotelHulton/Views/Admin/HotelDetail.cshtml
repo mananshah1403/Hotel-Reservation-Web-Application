@@ -1,0 +1,148 @@
+﻿@model HotelComponent.HOTEL
+@{
+    ViewBag.Title = "HotelDetail";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>HotelDetail</h2>
+<h2>@Html.ActionLink("Create a new Breakfast","CreateBreakfast")</h2>
+<h2>@Html.ActionLink("Create a new Service", "CreateService")</h2>
+<h2>@Html.ActionLink("Create a new Room", "CreateRoom")</h2>
+
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    RoomNo
+                </th>
+                <th>
+                   RoomType
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                   Floor
+                </th>
+                <th>
+                    Capacity
+                </th>
+                <th>
+                    Options
+                </th>
+            </tr>
+
+            @foreach (var item in Model.ROOMs.ToList())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Floor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Capacity)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditRoom", new { id = item.RoomNo }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.RoomNo }) |
+                        @Html.ActionLink("Offer Discount", "RoomDiscount", new { rno = item.RoomNo,hid=item.HotelID})
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    Breakfast Type
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Options
+                </th>
+                
+            </tr>
+
+            @foreach (var item in Model.BREAKFASTs.ToList())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BPrice)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditBreakfast", new { id = item.HotelID,type = item.BType }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.HotelID, type = item.BType })
+                    </td>
+                </tr>
+                <tr>
+                
+
+
+
+
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    Service Type
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Options
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model.SERVICEs.ToList())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SType)
+                    </td>
+              
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SPrice)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditService", new { id = item.HotelID, type = item.SType }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.HotelID, type = item.SType })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+

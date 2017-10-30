@@ -1,0 +1,78 @@
+﻿@model IEnumerable<HotelComponent.HOTEL>
+
+@{
+    ViewBag.Title = "ShowHotels";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>Hulton Chain Of Hotels</h2>
+@Html.ActionLink("View Reservations", "ViewReservations")
+@using (Html.BeginForm())
+{ 
+<table align="center">
+    <tr>
+        <td width="100px">
+            Enter Country 
+        </td>
+        <td>
+            <input id="Country" name="Country" type="text" />
+        </td>
+        <td width="100px" align="center">
+            Enter State
+        </td>
+        <td>
+            <input id="State" name="State" type="text" />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" align="center">
+            <br/>
+            <input id="searchHotel" type="submit" title="Search" value="Search" />    
+                 
+        </td>
+    </tr>
+     
+</table>
+}
+<br /> 
+<br /> 
+
+<table class="table" align="center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zip)
+            </td>
+            <td>
+                @Html.ActionLink("Select", "RoomDetails", "Room", new { HotelID = item.HotelID }, true)
+            </td>
+        </tr>
+    }
+
+</table>
+
